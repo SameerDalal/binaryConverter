@@ -123,39 +123,49 @@ public class binary {
                     default :
                         System.out.print(newInt);
                 }
-
-
                 /* prints the elements of the array in reverse order, and checks if a number is greater or equal to 10
                 so that it can change it to the corresponding letter. Otherwise, it will just print the number in the array. */
                 // counter 1 is not subtracted by one because we have one more division after the for loop.
             }
         }
     }
+
+
     public static void binaryToDecimal() {
 
         Scanner scanner4 = new Scanner(System.in);
         int binary = scanner4.nextInt();
-        ArrayList<Integer> divide10array = new ArrayList<Integer>();
+        // scanner object
+        ArrayList<Integer> divide10Array = new ArrayList<Integer>();
         int b = 0;
         while (binary > 0) {
-            divide10array.add(binary % 10);
+            divide10Array.add(binary % 10);
             binary /= 10;
             b++;
         }
+        // this chunk of code converts a series of numbers and splits it into individual numbers and stores it into `divide10Array` ArrayList.
 
         ArrayList<Integer> reversedArray = new ArrayList<Integer>();
         int p = 0;
         for (int y = b - 1; y >= 0; y--) {
-            reversedArray.add(divide10array.get(y));
+            reversedArray.add(divide10Array.get(y));
            // System.out.print(reversedArray.get(p));
             p++;
         }
+        // reverses the elements of 'divide10Array' and stores it in an ArrayList called 'reversedArray'
 
         ArrayList<Integer> finalBinaryArray = new ArrayList<Integer>();
         for (int u = 0; u< reversedArray.size(); u++) {
             finalBinaryArray.add(reversedArray.get(u));
             // System.out.print("  " + finalBinaryArray.get(u));
         }
+        /*
+        This code takes the reversed array and adds it to the ArrayList finalBinaryArray.
+        Here I could have said:
+        ArrayList<Integer> finalBinaryArray = new ArrayList<Integer>(reversedArray);
+        to add the elements from the reversed array to the final binary array.
+        I did not have to cycle through each element in the array to store it in another.
+         */
 
         ArrayList<Integer> finalDecimalArray = new ArrayList<Integer>();
         int g = (finalBinaryArray.size()) - 1;
@@ -163,18 +173,18 @@ public class binary {
             if (g<0){
                 break;
             } else {
-                int power;
-                power = (int) Math.pow(2,g);
-                finalDecimalArray.add((finalBinaryArray.get(y)) * (power));
+                finalDecimalArray.add((finalBinaryArray.get(y)) * (int)Math.pow(2,g));
                 // System.out.print(finalDecimalArray.get(y) + " ");
                 g--;
             }
         }
+        // this code takes each element from the ArrayList 'finalBinaryArray' and multiplies it by 2 to the power of the number of values in the array minus 1
 
         int add = 0;
         for (int z=0; z< finalDecimalArray.size(); z++){
-            add = add + (finalDecimalArray.get(z));
+            add += (finalDecimalArray.get(z));
         }
         System.out.println("Your number in decimal: " + add);
+        // this code adds all the elements in the ArrayList.
     }
 }

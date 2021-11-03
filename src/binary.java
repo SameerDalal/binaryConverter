@@ -185,6 +185,6 @@ public class binary {
             add += (finalDecimalArray.get(z));
         }
         System.out.println("Your number in decimal: " + add);
-        // this code adds all the elements in the ArrayList.
+        // this code adds up all the elements in the ArrayList.
     }
 }
